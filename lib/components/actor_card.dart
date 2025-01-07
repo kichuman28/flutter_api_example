@@ -10,15 +10,16 @@ class ActorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 50,
-      shadowColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0), // Adjust the radius as needed
+      ),
       color: Colors.green,
       child: Expanded(
         child: SizedBox(
           width: 500,
           height: 300,
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(10.0),
             child: Expanded(
               child: Row(
                 children: [
@@ -26,6 +27,7 @@ class ActorCard extends StatelessWidget {
                     width: 220,
                     height: 300,
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
                       image: DecorationImage(
                         image: NetworkImage(info!.data!.user.profileImage),
                         fit: BoxFit.cover,
