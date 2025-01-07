@@ -73,13 +73,19 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 20,
             ),
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all(Colors.blue), // Change button color
+              ),
               onPressed: () {
                 setState(() {
                   apiCall = true;
                 });
                 getData(myController.text);
               },
-              child: Text("Fetch User"),
+              child: Text(
+                "Fetch User",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             SizedBox(
               height: 20,
