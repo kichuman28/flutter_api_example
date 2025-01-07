@@ -56,7 +56,14 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.only(left: 150.0, right: 150.0),
               child: TextField(
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  enabledBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                    borderSide: BorderSide(color: Colors.green, width: 3.0),
+                  ),
+                  focusedBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                    borderSide: BorderSide(color: Colors.green, width: 3.0),
+                  ),
                   hintText: 'User ID',
                 ),
                 controller: myController,
