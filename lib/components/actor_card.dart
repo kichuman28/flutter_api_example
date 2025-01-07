@@ -38,14 +38,18 @@ class ActorCard extends StatelessWidget {
                   //   width: 15,
                   // ),
                   Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("Name: ${info!.data?.user.name}"),
-                        Text("User ID: ${info!.data?.user.userId}"),
-                        Text("Age: ${info!.data?.user.age}"),
-                        Text("Profession: ${info!.data?.user.profession}"),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          textCombo("Name", "${info!.data?.user.name}"),
+                          textCombo("User ID", "${info!.data?.user.userId}"),
+                          textCombo("Age", "${info!.data?.user.age}"),
+                          textCombo("Profession", "${info!.data?.user.profession}")
+                        ],
+                      ),
                     ),
                   )
                 ],
@@ -54,6 +58,32 @@ class ActorCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget textCombo(String leftText, String rightText) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: 75,
+          child: Text(
+            leftText,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          ),
+        ),
+        Text(
+          ":",
+          style: TextStyle(color: Colors.white),
+        ),
+        SizedBox(width: 8),
+        SizedBox(
+          child: Text(
+            rightText,
+            style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),
+          ),
+        ),
+      ],
     );
   }
 }
