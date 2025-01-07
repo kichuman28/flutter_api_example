@@ -27,7 +27,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void getData(String userID) async {
-    info = await UserService().getUser(userID);
+    try {
+      info = await UserService().getUser(userID);
+    } catch (error) {
+      print(error);
+    }
+
     apiCall = false;
     if (info != null) {
       setState(() {});
@@ -78,11 +83,13 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 20,
             ),
-            info == null
-                ? Text("Enter a user ID and click to get the user details")
-                : info!.success == true
-                    ? getProperWidget()
-                    : Text(info!.error),
+            apiCall == true
+                ? CircularProgressIndicator()
+                : info == null
+                    ? Text("Enter a user ID and click to get the user details")
+                    : info!.success
+                        ? ActorCard(info: info)
+                        : Text(info!.error)
           ],
         ),
       ),

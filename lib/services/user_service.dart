@@ -13,6 +13,10 @@ class UserService {
       var json = response.body;
       print(json);
       return welcomeFromJson(json);
+    } else if (response.statusCode == 404) {
+      var json = response.body;
+      print(json);
+      return welcomeFromJson(json);
     }
     return null;
   }

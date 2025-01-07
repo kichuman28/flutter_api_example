@@ -27,7 +27,7 @@ class ActorCard extends StatelessWidget {
                     height: 300,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(info!.data.user.profileImage),
+                        image: NetworkImage(info!.data!.user.profileImage),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -39,10 +39,10 @@ class ActorCard extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Name: ${info!.data.user.name}"),
-                        Text("User ID: ${info!.data.user.userId}"),
-                        Text("Age: ${info!.data.user.age}"),
-                        Text("Profession: ${info!.data.user.profession}"),
+                        Text("Name: ${info!.data?.user.name}"),
+                        Text("User ID: ${info!.data?.user.userId}"),
+                        Text("Age: ${info!.data?.user.age}"),
+                        Text("Profession: ${info!.data?.user.profession}"),
                       ],
                     ),
                   )

@@ -6,25 +6,25 @@ Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
 String welcomeToJson(Welcome data) => json.encode(data.toJson());
 
 class Welcome {
-  bool success;
-  Data data;
-  dynamic error;
-
   Welcome({
     required this.success,
-    required this.data,
+    this.data,
     this.error,
   });
 
+  bool success;
+  Data? data;
+  dynamic error;
+
   factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
         success: json["success"],
-        data: Data.fromJson(json["data"]),
+        data: json["data"] != null ? Data.fromJson(json["data"]) : null,
         error: json["error"],
       );
 
   Map<String, dynamic> toJson() => {
         "success": success,
-        "data": data.toJson(),
+        "data": data?.toJson(),
         "error": error,
       };
 }
