@@ -37,14 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  Widget getProperWidget() {
-    if (apiCall) {
-      return CircularProgressIndicator();
-    } else {
-      return ActorCard(info: info);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
