@@ -10,13 +10,17 @@ class UserService {
     var url = Uri.parse("https://2fa0d036-25f8-4bc9-80a4-ff1726e4e097.mock.pstmn.io/caddayn/mock/users/$userID");
     var response = await client.get(url);
     if (response.statusCode == 200) {
+      print(response.statusCode);
       var json = response.body;
       print(json);
       return welcomeFromJson(json);
     } else if (response.statusCode == 404) {
+      print(response.statusCode);
       var json = response.body;
       print(json);
       return welcomeFromJson(json);
+    } else {
+      print(response.statusCode);
     }
     return null;
   }
