@@ -12,7 +12,7 @@ class ActorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0), // Adjust the radius as needed
+        borderRadius: BorderRadius.circular(20.0),
       ),
       color: Colors.green,
       child: SizedBox(
@@ -33,9 +33,6 @@ class ActorCard extends StatelessWidget {
                   ),
                 ),
               ),
-              // SizedBox(
-              //   width: 15,
-              // ),
               Padding(
                 padding: const EdgeInsets.only(left: 15),
                 child: Column(
