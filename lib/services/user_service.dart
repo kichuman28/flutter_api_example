@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 
 class UserService {
-  Future<UserModel?> getUser(String userID) async {
+  static Future<UserModel?> getUser(String userID) async {
     var client = http.Client();
 
     var url = Uri.parse("https://2fa0d036-25f8-4bc9-80a4-ff1726e4e097.mock.pstmn.io/caddayn/mock/users/$userID");
