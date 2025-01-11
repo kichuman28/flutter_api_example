@@ -15,12 +15,12 @@ class _MyHomePageState extends State<MyHomePage> {
   UserModel? info;
   bool apiCall = false;
   String userID = "";
-  final myController = TextEditingController();
+  final textFieldController = TextEditingController();
 
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    myController.dispose();
+    textFieldController.dispose();
     super.dispose();
   }
 
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   hintText: 'User ID',
                 ),
-                controller: myController,
+                controller: textFieldController,
               ),
             ),
             SizedBox(
@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 setState(() {
                   apiCall = true;
                 });
-                getData(myController.text);
+                getData(textFieldController.text);
               },
               child: Text(
                 "Fetch User",
