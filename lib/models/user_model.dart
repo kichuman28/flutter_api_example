@@ -14,12 +14,12 @@ class UserModel {
 
   bool success;
   Data? data;
-  dynamic error;
+  String? error;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        success: json["success"],
+        success: json["success"] ?? false,
         data: json["data"] != null ? Data.fromJson(json["data"]) : null,
-        error: json["error"],
+        error: json["error"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
