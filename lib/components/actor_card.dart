@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ActorCard extends StatelessWidget {
   const ActorCard({super.key, required this.info});
 
-  final Welcome? info;
+  final UserModel? info;
 
   @override
   Widget build(BuildContext context) {

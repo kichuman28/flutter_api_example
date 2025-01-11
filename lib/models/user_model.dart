@@ -1,12 +1,12 @@
 // Created by: Adwaith Jayasankar, Created at: 06-01-2025 22:02
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+UserModel welcomeFromJson(String str) => UserModel.fromJson(json.decode(str));
 
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
+String welcomeToJson(UserModel data) => json.encode(data.toJson());
 
-class Welcome {
-  Welcome({
+class UserModel {
+  UserModel({
     required this.success,
     this.data,
     this.error,
@@ -16,7 +16,7 @@ class Welcome {
   Data? data;
   dynamic error;
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         success: json["success"],
         data: json["data"] != null ? Data.fromJson(json["data"]) : null,
         error: json["error"],

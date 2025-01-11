@@ -12,7 +12,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Welcome? info;
+  UserModel? info;
   bool apiCall = false;
   String userID = "";
   final myController = TextEditingController();
