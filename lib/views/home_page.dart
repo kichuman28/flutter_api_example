@@ -63,12 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: _textFieldController,
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(Colors.blue), // Change button color
+                backgroundColor: WidgetStateProperty.all(Colors.blue),
               ),
               onPressed: () {
                 setState(() {
