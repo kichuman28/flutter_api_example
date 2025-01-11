@@ -1,4 +1,5 @@
 // Created by: Adwaith Jayasankar, Created at: 07-01-2025 00:51
+import 'package:counter/components/text_combo.dart';
 import 'package:counter/models/user_model.dart';
 import 'package:flutter/material.dart';
 
@@ -44,10 +45,10 @@ class ActorCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          textCombo("Name", "${info!.data?.user.name}"),
-                          textCombo("User ID", "${info!.data?.user.userId}"),
-                          textCombo("Age", "${info!.data?.user.age}"),
-                          textCombo("Profession", "${info!.data?.user.profession}")
+                          TextCombo(leftText: "Name", rightText: "${info!.data?.user.name}"),
+                          TextCombo(leftText: "User ID", rightText: "${info!.data?.user.userId}"),
+                          TextCombo(leftText: "Age", rightText: "${info!.data?.user.age}"),
+                          TextCombo(leftText: "Profession", rightText: "${info!.data?.user.profession}")
                         ],
                       ),
                     ),
@@ -58,32 +59,6 @@ class ActorCard extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget textCombo(String leftText, String rightText) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 75,
-          child: Text(
-            leftText,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-          ),
-        ),
-        Text(
-          ":",
-          style: TextStyle(color: Colors.white),
-        ),
-        SizedBox(width: 8),
-        SizedBox(
-          child: Text(
-            rightText,
-            style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),
-          ),
-        ),
-      ],
     );
   }
 }
