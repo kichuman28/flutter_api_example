@@ -4,6 +4,14 @@ import 'package:counter/models/user_model.dart';
 import 'package:counter/services/user_service.dart';
 import 'package:flutter/material.dart';
 
+enum Status {
+  initial,
+  success,
+  error,
+  loading,
+  noWifi,
+}
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -13,8 +21,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   UserModel? info;
-  bool apiCall = false;
-  String userID = "";
+  Status apiStatus = Status.initial;
   late TextEditingController _textFieldController;
 
   @override
@@ -31,11 +38,23 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void getData(String userID) async {
-    info = await UserService().getUser(userID);
+    setState(() {
+      apiStatus = Status.loading;
+    });
 
-    apiCall = false;
-    if (info != null) {
-      setState(() {});
+    info = await UserService.getUser(userID);
+    if (info != null && info!.success) {
+      setState(() {
+        apiStatus = Status.success;
+      });
+    } else if (!info!.success) {
+      setState(() {
+        apiStatus = Status.error;
+      });
+    } else {
+      setState(() {
+        apiStatus = Status.noWifi;
+      });
     }
   }
 
@@ -69,9 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 backgroundColor: WidgetStateProperty.all(Colors.blue),
               ),
               onPressed: () {
-                setState(() {
-                  apiCall = true;
-                });
                 getData(_textFieldController.text);
               },
               child: Text(
@@ -79,16 +95,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            apiCall == true
-                ? CircularProgressIndicator()
-                : info == null
-                    ? Text("Enter a user ID and click to get the user details")
-                    : info!.success
-                        ? ActorCard(info: info)
-                        : Text(info!.error)
+            SizedBox(height: 20),
+
+            if (apiStatus == Status.loading)
+              const CircularProgressIndicator()
+            else if (apiStatus == Status.success)
+              ActorCard(info: info)
+            else if (apiStatus == Status.initial)
+              Text("Enter a user ID and click to get the user details")
+            else if (apiStatus == Status.error)
+              Text(info!.error ?? '')
+            else if (apiStatus == Status.noWifi)
+              Text("Something went wrong")
+
+            // apiStatus == true
+            //     ? CircularProgressIndicator()
+            //     : info == null
+            //         ? Text("Enter a user ID and click to get the user details")
+            //         : info!.success
+            //             ? ActorCard(info: info)
+            //             : Text(info!.error ?? '')
           ],
         ),
       ),
