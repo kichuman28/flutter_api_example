@@ -16,6 +16,7 @@ class UserService {
         print(json);
         return welcomeFromJson(json);
       } else if (response.statusCode == 404) {
+        //I know both these if else statements return the same things, I kept it that way to ask a doubt regarding the api. So currently not removing it as of now.
         print(response.statusCode);
         var json = response.body;
         print(json);
