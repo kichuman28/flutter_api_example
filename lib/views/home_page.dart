@@ -9,7 +9,6 @@ enum Status {
   success,
   error,
   loading,
-  noWifi,
 }
 
 class MyHomePage extends StatefulWidget {
@@ -47,13 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         apiStatus = Status.success;
       });
-    } else if (!info!.success) {
-      setState(() {
-        apiStatus = Status.error;
-      });
     } else {
       setState(() {
-        apiStatus = Status.noWifi;
+        apiStatus = Status.error;
       });
     }
   }
@@ -96,28 +91,23 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             SizedBox(height: 20),
-
-            if (apiStatus == Status.loading)
-              const CircularProgressIndicator()
-            else if (apiStatus == Status.success)
-              ActorCard(info: info)
-            else if (apiStatus == Status.initial)
-              Text("Enter a user ID and click to get the user details")
-            else if (apiStatus == Status.error)
-              Text(info!.error ?? '')
-            else if (apiStatus == Status.noWifi)
-              Text("Something went wrong")
-
-            // apiStatus == true
-            //     ? CircularProgressIndicator()
-            //     : info == null
-            //         ? Text("Enter a user ID and click to get the user details")
-            //         : info!.success
-            //             ? ActorCard(info: info)
-            //             : Text(info!.error ?? '')
+            _showContent()
           ],
         ),
       ),
     );
+  }
+
+  Widget _showContent() {
+    switch (apiStatus) {
+      case Status.loading:
+        return const CircularProgressIndicator();
+      case Status.initial:
+        return const Text("Enter a user ID and click to get the user details");
+      case Status.success:
+        return ActorCard(info: info!);
+      case Status.error:
+        return Text(info?.error ?? 'Something went wrong');
+    }
   }
 }
