@@ -15,47 +15,41 @@ class ActorCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.0), // Adjust the radius as needed
       ),
       color: Colors.green,
-      child: Expanded(
-        child: SizedBox(
-          width: 500,
-          height: 300,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Expanded(
-              child: Row(
-                children: [
-                  Container(
-                    width: 220,
-                    height: 300,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      image: DecorationImage(
-                        image: NetworkImage(info!.data!.user.profileImage),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+      child: SizedBox(
+        width: 500,
+        height: 300,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Container(
+                width: 220,
+                height: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                  image: DecorationImage(
+                    image: NetworkImage(info!.data!.user.profileImage),
+                    fit: BoxFit.cover,
                   ),
-                  // SizedBox(
-                  //   width: 15,
-                  // ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TextCombo(leftText: "Name", rightText: "${info!.data?.user.name}"),
-                          TextCombo(leftText: "User ID", rightText: "${info!.data?.user.userId}"),
-                          TextCombo(leftText: "Age", rightText: "${info!.data?.user.age}"),
-                          TextCombo(leftText: "Profession", rightText: "${info!.data?.user.profession}")
-                        ],
-                      ),
-                    ),
-                  )
-                ],
+                ),
               ),
-            ),
+              // SizedBox(
+              //   width: 15,
+              // ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextCombo(leftText: "Name", rightText: "${info!.data?.user.name}"),
+                    TextCombo(leftText: "User ID", rightText: "${info!.data?.user.userId}"),
+                    TextCombo(leftText: "Age", rightText: "${info!.data?.user.age}"),
+                    TextCombo(leftText: "Profession", rightText: "${info!.data?.user.profession}")
+                  ],
+                ),
+              )
+            ],
           ),
         ),
       ),
