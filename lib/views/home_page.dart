@@ -31,11 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void getData(String userID) async {
-    try {
-      info = await UserService().getUser(userID);
-    } catch (error) {
-      print(error);
-    }
+    info = await UserService().getUser(userID);
 
     apiCall = false;
     if (info != null) {
