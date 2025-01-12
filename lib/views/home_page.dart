@@ -22,6 +22,10 @@ class _MyHomePageState extends State<MyHomePage> {
   UserModel? info;
   Status apiStatus = Status.initial;
   late TextEditingController _textFieldController;
+  OutlineInputBorder textFieldColor = OutlineInputBorder(
+    borderSide: const BorderSide(color: Colors.green, width: 3.0),
+    borderRadius: BorderRadius.circular(15.0),
+  );
 
   @override
   void initState() {
@@ -64,14 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.only(left: 150.0, right: 150.0),
               child: TextField(
                 decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(color: Colors.green, width: 3.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(color: Colors.green, width: 3.0),
-                  ),
+                  enabledBorder: textFieldColor,
+                  focusedBorder: textFieldColor,
                   hintText: 'User ID',
                 ),
                 controller: _textFieldController,
