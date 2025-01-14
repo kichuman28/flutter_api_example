@@ -3,13 +3,7 @@ import 'package:counter/components/actor_card.dart';
 import 'package:counter/models/user_model.dart';
 import 'package:counter/services/user_service.dart';
 import 'package:flutter/material.dart';
-
-enum Status {
-  initial,
-  success,
-  error,
-  loading,
-}
+import '../enums/api_status_enum.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
