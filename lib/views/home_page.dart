@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             Padding(
               padding: const EdgeInsets.only(left: 150.0, right: 150.0),
               child: TextField(
@@ -89,23 +89,17 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             SizedBox(height: 20),
-            _showContent()
+            if (apiStatus == Status.loading)
+              const CircularProgressIndicator()
+            else if (apiStatus == Status.initial)
+              const Text("Enter a user ID and click to get the user details")
+            else if (apiStatus == Status.success)
+              ActorCard(info: info)
+            else if (apiStatus == Status.error)
+              Text(info?.error ?? 'An unexpected error occurred'),
           ],
         ),
       ),
     );
-  }
-
-  Widget _showContent() {
-    switch (apiStatus) {
-      case Status.loading:
-        return const CircularProgressIndicator();
-      case Status.initial:
-        return const Text("Enter a user ID and click to get the user details");
-      case Status.success:
-        return ActorCard(info: info!);
-      case Status.error:
-        return Text(info?.error ?? 'Something went wrong');
-    }
   }
 }
